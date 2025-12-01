@@ -9,22 +9,11 @@ export default function CrewTable() {
 
   useEffect(() => {
     async function load() {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select(
-          `
+      const { data, error } = await supabase.from("drivers").select(`
           id,
-          full_name,
-          role,
-          driver_profiles (
-            vehicle_type,
-            vehicle_registration,
-            shift_type,
-            is_active
-          )
-        `
-        )
-        .eq("role", "driver");
+          first_name,
+          last_name
+        `);
 
       if (error) console.error(error);
       setDrivers(data);
@@ -40,7 +29,8 @@ export default function CrewTable() {
           key={driver.id}
           className="rounded-lg border p-4 bg-neutral-900 text-white"
         >
-          <h2 className="text-lg font-semibold">{driver.full_name}</h2>
+          <h2 className="text-lg font-semibold">{driver.first_name}</h2>
+          <h2 className="text-lg font-semibold">{driver.last_name}</h2>
 
           <p>Vehicle: {driver.driver_profiles?.vehicle_type}</p>
           <p>Reg: {driver.driver_profiles?.vehicle_registration}</p>
