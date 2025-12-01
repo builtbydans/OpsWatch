@@ -36,12 +36,17 @@ const data = {
   },
   teams: [
     {
-      name: "Bermondsey SR2",
+      name: "Bermondsey SE1",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
     {
-      name: "Barking SR2",
+      name: "Wembley HA9",
+      logo: AudioWaveform,
+      plan: "Enterprise",
+    },
+    {
+      name: "Rainham RM13",
       logo: AudioWaveform,
       plan: "Enterprise",
     },
@@ -71,6 +76,17 @@ const data = {
       title: "Systems Overview",
       url: "/systems-overview",
       icon: SquareTerminal,
+    },
+    {
+      title: "User Management",
+      url: "",
+      icon: SquareTerminal,
+      items: [
+        {
+          title: "Add User",
+          url: "/users/add",
+        },
+      ],
     },
     {
       title: "Crew Manfiest",
