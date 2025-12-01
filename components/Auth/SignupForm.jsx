@@ -21,7 +21,8 @@ export function SignupForm({ className, ...props }) {
   async function handleSignup(e) {
     e.preventDefault();
 
-    const full_name = e.target.full_name.value;
+    const first_name = e.target.first_name.value;
+    const last_name = e.target.last_name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
@@ -29,7 +30,7 @@ export function SignupForm({ className, ...props }) {
       email,
       password,
       options: {
-        data: { full_name }, // goes into raw_user_meta_data + your trigger fills profiles
+        data: { first_name, last_name }, // goes into raw_user_meta_data + your trigger fills profiles
       },
     });
 
@@ -37,6 +38,8 @@ export function SignupForm({ className, ...props }) {
       console.error(error.message);
       return;
     }
+
+    console.log("Supabase signup result:", { data, error });
 
     router.push("/"); // go to dashboard
     router.refresh(); // refresh session
@@ -55,13 +58,22 @@ export function SignupForm({ className, ...props }) {
                 </p>
               </div>
 
-              {/* Full Name */}
               <Field>
-                <FieldLabel htmlFor="full_name">Full Name</FieldLabel>
+                <FieldLabel htmlFor="full_name">First Name</FieldLabel>
                 <Input
-                  id="full_name"
+                  id="first_name"
                   type="text"
-                  placeholder="John Deliveroo"
+                  placeholder="John"
+                  required
+                />
+              </Field>
+
+              <Field>
+                <FieldLabel htmlFor="last_name">Last Name</FieldLabel>
+                <Input
+                  id="last_name"
+                  type="text"
+                  placeholder="Deliveroo"
                   required
                 />
               </Field>
@@ -92,39 +104,6 @@ export function SignupForm({ className, ...props }) {
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 Or sign up with
               </FieldSeparator>
-
-              {/* OAuth buttons */}
-              <Field className="grid grid-cols-3 gap-4">
-                <Button variant="outline" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04..."
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span className="sr-only">Sign up with Apple</span>
-                </Button>
-
-                <Button variant="outline" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M12.48 10.92v3.28h7.84c-.24 1.84..."
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span className="sr-only">Sign up with Google</span>
-                </Button>
-
-                <Button variant="outline" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M6.915 4.03c-1.968 0-3.683 1.28..."
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <span className="sr-only">Sign up with Meta</span>
-                </Button>
-              </Field>
 
               <FieldDescription className="text-center">
                 Already have an account?{" "}

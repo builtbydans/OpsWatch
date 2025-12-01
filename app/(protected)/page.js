@@ -1,5 +1,5 @@
-import DashboardView from "@/components/Dashboard/DashboardView";
-import NavBar from "@/components/Navigation/NavBar";
+import DashboardView from "@/components/dashboard/DashboardView";
+import NavBar from "@/components/navigation/NavBar";
 
 export default function Page() {
   return (

@@ -14,10 +14,10 @@ import {
   SquareTerminal,
 } from "lucide-react";
 
-import { NavMain } from "@/components/Dashboard/NavMain";
-import { NavProjects } from "@/components/Dashboard/NavProjects";
-import { NavUser } from "@/components/Dashboard/NavUser";
-import { TeamSwitcher } from "@/components/Dashboard/TeamSwitcher";
+import { NavMain } from "@/components/dashboard/NavMain";
+import { NavProjects } from "@/components/dashboard/NavProjects";
+import { NavUser } from "@/components/dashboard/NavUser";
+import { TeamSwitcher } from "@/components/dashboard/TeamSwitcher";
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +25,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import LogoutButton from "@/components/Auth/LogoutButton";
+import LogoutButton from "@/components/auth/LogoutButton";
 
 // This is sample data.
 const data = {
@@ -36,19 +36,14 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Bermondsey SR2",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
     {
-      name: "Acme Corp.",
+      name: "Barking SR2",
       logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
+      plan: "Enterprise",
     },
   ],
   navMain: [
@@ -73,27 +68,12 @@ const data = {
       ],
     },
     {
-      title: "Playground",
-      url: "#",
+      title: "Systems Overview",
+      url: "/systems-overview",
       icon: SquareTerminal,
-      isActive: false,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
+      title: "Crew Manfiest",
       url: "#",
       icon: Bot,
       items: [
@@ -112,7 +92,7 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Navigation",
       url: "#",
       icon: BookOpen,
       items: [
@@ -135,7 +115,30 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title: "Event Logs",
+      url: "#",
+      icon: Settings2,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Mission Control",
       url: "#",
       icon: Settings2,
       items: [
@@ -183,11 +186,11 @@ export function AppSidebar({ ...props }) {
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
-      <LogoutButton />
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
+      <LogoutButton />
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>

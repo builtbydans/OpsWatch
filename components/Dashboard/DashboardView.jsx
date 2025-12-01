@@ -1,4 +1,6 @@
-import { AppSidebar } from "@/components/Dashboard/AppSidebar";
+"use client";
+
+import { AppSidebar } from "@/components/dashboard/AppSidebar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   Breadcrumb,
@@ -14,8 +16,11 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import CrewTable from "../crew/CrewTable";
+import { useUser } from "@/components/providers/UserProvider";
 
 export default function Page() {
+  const { user } = useUser();
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -30,13 +35,11 @@ export default function Page() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
+                  <BreadcrumbLink href="#">Command Dashboard</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>{user?.full_name ?? "..."}</BreadcrumbPage>
                   <ThemeToggle /> {/* remove me at some point */}
                 </BreadcrumbItem>
               </BreadcrumbList>
@@ -49,7 +52,10 @@ export default function Page() {
             <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-3">
+            <h3>Drivers</h3>
+            <CrewTable />
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
