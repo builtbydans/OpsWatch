@@ -1,6 +1,6 @@
 "use server";
 
-import { createServerClient } from "@/utils/supabase/server";
+import { createServerClient } from "@/supabase/server";
 
 export async function addDriver(formData: FormData) {
   const first = formData.get("first_name") as string;

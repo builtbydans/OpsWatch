@@ -1,4 +1,4 @@
-import { createServerClient } from "@/utils/supabase/server";
+import { createServerClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 
 export async function GET() {

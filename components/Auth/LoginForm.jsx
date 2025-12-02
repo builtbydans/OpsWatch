@@ -1,6 +1,6 @@
 "use client";
 
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/supabase/client";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,6 @@ export function LoginForm({ className, ...props }) {
     }
 
     router.push("/"); // redirect to dashboard
-    router.refresh(); // refresh session on the server
   }
 
   return (
