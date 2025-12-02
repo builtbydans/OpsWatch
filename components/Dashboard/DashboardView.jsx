@@ -16,11 +16,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import CrewTable from "../crew/CrewTable";
-import { useUser } from "@/components/providers/UserProvider";
+import Profile from "@/components/dashboard/Profile";
+import { useUser } from "@/app/providers/UserProvider";
 
-export default function Page() {
+export default function Dashboard() {
   const { user } = useUser();
+  const firstName = user?.full_name ?? "User";
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -39,7 +41,7 @@ export default function Page() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{user?.full_name ?? "..."}</BreadcrumbPage>
+                  <BreadcrumbPage>{firstName}</BreadcrumbPage>
                   <ThemeToggle /> {/* remove me at some point */}
                 </BreadcrumbItem>
               </BreadcrumbList>
@@ -52,9 +54,8 @@ export default function Page() {
             <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-3">
-            <h3>Drivers</h3>
-            <CrewTable />
+          <div className="bg-muted/50 min-h-screen flex-1 rounded-xl md:min-h-min p-3">
+            <Profile />
           </div>
         </div>
       </SidebarInset>

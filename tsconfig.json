@@ -28,8 +28,9 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "utils/supabase/client.js",
-    "utils/supabase/server.js"
+    "supabase/client.js",
+    "supabase/server.js",
+    "app/(protected)/layout.jsx"
   ],
   "exclude": ["node_modules"]
 }
