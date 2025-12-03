@@ -5,7 +5,7 @@ export function middleware(req) {
 
   // If no token and trying to access a protected route → redirect to login
   if (!authCookie && req.nextUrl.pathname.startsWith("/")) {
-    const url = new URL("/auth/login", req.url);
+    const url = new URL("/login", req.url);
     return NextResponse.redirect(url);
   }
 

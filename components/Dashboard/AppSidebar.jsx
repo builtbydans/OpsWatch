@@ -12,6 +12,7 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  House,
 } from "lucide-react";
 
 import { NavMain } from "@/components/dashboard/NavMain";
@@ -25,9 +26,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import LogoutButton from "@/components/auth/LogoutButton";
 
-// This is sample data.
 const data = {
   user: {
     name: "shadcn",
@@ -52,6 +51,11 @@ const data = {
     },
   ],
   navMain: [
+    {
+      title: "Dashboard",
+      url: "/",
+      icon: House,
+    },
     {
       title: "Reports",
       url: "#",
@@ -206,7 +210,6 @@ export function AppSidebar({ ...props }) {
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
-      <LogoutButton />
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
