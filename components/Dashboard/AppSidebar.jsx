@@ -8,11 +8,11 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
-  Map,
   PieChart,
   Settings2,
   SquareTerminal,
   House,
+  Map,
 } from "lucide-react";
 
 import { NavMain } from "@/components/dashboard/NavMain";
@@ -55,6 +55,11 @@ const data = {
       title: "Dashboard",
       url: "/",
       icon: House,
+    },
+    {
+      title: "Live Map",
+      url: "/map",
+      icon: Map,
     },
     {
       title: "Reports",
