@@ -1,12 +1,7 @@
-// app/(protected)/layout.jsx
-
 import { redirect } from "next/navigation";
 import { createServerClient } from "@/supabase/server";
 import { UserProvider } from "@/app/providers/UserProvider";
-
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/dashboard/AppSidebar";
-import GlobalTopBar from "@/components/dashboard/GlobalTopBar";
+import ClientSidebarLayout from "@/components/ClientSidebarLayout";
 
 export default async function ProtectedLayout({ children }) {
   // ---------- AUTH ----------
@@ -28,19 +23,7 @@ export default async function ProtectedLayout({ children }) {
 
   return (
     <UserProvider initialUser={fullUser}>
-      <SidebarProvider>
-        {/* LEFT SIDEBAR */}
-        <AppSidebar />
-
-        {/* RIGHT CONTENT AREA */}
-        <SidebarInset>
-          {/* GLOBAL TOP HEADER */}
-          <GlobalTopBar />
-
-          {/* ROUTE CONTENT */}
-          <main className="flex-1 p-4 overflow-y-auto">{children}</main>
-        </SidebarInset>
-      </SidebarProvider>
+      <ClientSidebarLayout>{children}</ClientSidebarLayout>
     </UserProvider>
   );
 }
